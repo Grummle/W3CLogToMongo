@@ -17,7 +17,7 @@ Features
 -Alias Elements: Change field names before insertion
 -MultiColumn Elements: Handle MS LAME ASS BS Columns
 
-Below is an outline of the config [this](https://gist.github.com/3209354) is an example of a templated config.
+Below is an outline of the config. [This](https://gist.github.com/3209354) is an example of a templated config.
 
 ```
 {
