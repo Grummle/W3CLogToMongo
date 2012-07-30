@@ -1,0 +1,58 @@
+{
+  "logPath": "c:\\iislogreader.log",
+  "sources": [
+    {
+	  "id":"services.reachmail.net",
+      "templates":["iisExtendTemplate.json"],
+      "logDirectory": "c:\\Users\\mdillon\\Dropbox\\Desktop\\IISLogs\\",
+      "destination": 
+			{
+				"mongoConnectionString":"mongodb://localhost/?safe=true",
+				"mongoDatabase":"test",
+				"mongoCollection":"iis"
+			},
+      "drop": [
+        "date",
+        "time"
+      ],
+      "staticElements": [
+			{
+				"elementName":"logSourceId",
+				"elementValue":"services.reachmail.net"
+			}
+			]
+    },
+		{
+	  	"id":"go.dev.reachmail.net",
+      "logDirectory": "C:\\inetpub\\logs\\AdvancedLogs\\GO.REACHMAIL.NET\\",
+      "destination": 
+			{
+				"mongoConnectionString":"mongodb://localhost/?safe=true",
+				"mongoDatabase":"test",
+				"mongoCollection":"iis"
+			},
+      "staticElements": [
+			{
+				"elementName":"logSourceId",
+				"elementValue":"go.dev.reachmail.net"
+			}
+			]
+    },
+		{
+	  	"id":"admin.dev.reachmail.net",
+      "logDirectory": "C:\\inetpub\\logs\\LogFiles\\W3SVC3\\",
+      "destination": 
+			{
+				"mongoConnectionString":"mongodb://localhost/?safe=true",
+				"mongoDatabase":"test",
+				"mongoCollection":"iis"
+			},
+      "staticElements": [
+			{
+				"elementName":"logSourceId",
+				"elementValue":"admin.dev.reachmail.net"
+			}
+			]
+    }
+  ]
+}

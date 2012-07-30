@@ -1,0 +1,151 @@
+{
+  "logPath": "c:\\iislogreader.log",
+  "sources": [
+    {
+		"enabled":true,
+		"logAll":true,
+		"batchSize":10000,
+	  "id":"services.reachmail.net",
+      "logDirectory": "c:\\Users\\mdillon\\Dropbox\\Desktop\\IISLogs\\",
+      "entryLimit": 0,
+      "destination": 
+			{
+				"mongoConnectionString":"mongodb://localhost/?safe=true",
+				"mongoDatabase":"test",
+				"mongoCollection":"iis"
+			},
+      "conversions": [
+        {
+          "elementName": "datetime",
+          "type": "DateTime"
+        }
+      ],
+      "composites": [
+        {
+          "elementName": "datetime",
+          "elements": [
+            "date",
+            "time"
+          ]
+        }
+      ],
+      "aliases": [
+      ],
+      "drop": [
+        "date",
+        "time"
+      ],
+      "multiColumnElements": [
+			
+			],
+      "staticElements": [
+			{
+				"elementName":"logSourceId",
+				"elementValue":"services.reachmail.net"
+			}
+			]
+    },
+		{
+		"enabled":true,
+		"logAll":true,
+		"batchSize":10000,
+	  "id":"go.dev.reachmail.net",
+      "logDirectory": "C:\\inetpub\\logs\\AdvancedLogs\\GO.REACHMAIL.NET\\",
+      "entryLimit": 0,
+      "destination": 
+			{
+				"mongoConnectionString":"mongodb://localhost/?safe=true",
+				"mongoDatabase":"test",
+				"mongoCollection":"iis"
+			},
+      "conversions": [
+        {
+          "elementName": "datetime",
+          "type": "DateTime"
+        }
+      ],
+      "composites": [
+        {
+          "elementName": "datetime",
+          "elements": [
+            "date",
+            "time"
+          ]
+        }
+      ],
+      "aliases": [
+      ],
+      "drop": [
+        "date",
+        "time"
+      ],
+      "multiColumnElements": [
+			{
+				"elementName":"EndRequest-UTC",
+				"colSpan":"2"
+			},
+			{
+				"elementName":"BeginRequest-UTC",
+				"colSpan":"2"
+			}
+			],
+      "staticElements": [
+			{
+				"elementName":"logSourceId",
+				"elementValue":"go.dev.reachmail.net"
+			}
+			]
+    },
+		{
+		"enabled":true,
+		"logAll":true,
+		"batchSize":10000,
+	  "id":"admin.dev.reachmail.net",
+      "logDirectory": "C:\\inetpub\\logs\\LogFiles\\W3SVC3\\",
+      "entryLimit": 0,
+      "destination": 
+			{
+				"mongoConnectionString":"mongodb://localhost/?safe=true",
+				"mongoDatabase":"test",
+				"mongoCollection":"iis"
+			},
+      "conversions": [
+        {
+          "elementName": "datetime",
+          "type": "DateTime"
+        }
+      ],
+      "composites": [
+        {
+          "elementName": "datetime",
+          "elements": [
+            "date",
+            "time"
+          ]
+        }
+      ],
+      "aliases": [
+      ],
+      "drop": [
+        "date",
+        "time"
+      ],
+      "multiColumnElements": [
+			{
+				"elementName":"EndRequest-UTC",
+				"colSpan":"2"
+			},
+			{
+				"elementName":"BeginRequest-UTC",
+				"colSpan":"2"
+			}
+			],
+      "staticElements": [
+			{
+				"elementName":"logSourceId",
+				"elementValue":"admin.dev.reachmail.net"
+			}
+			]
+    }
+  ]
+}

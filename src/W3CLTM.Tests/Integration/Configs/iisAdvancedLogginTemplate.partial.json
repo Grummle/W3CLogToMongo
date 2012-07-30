@@ -1,0 +1,12 @@
+{
+	"multiColumnElements":[
+			{
+				"elementName":"EndRequest-UTC",
+				"colSpan":"2"
+			},
+			{
+				"elementName":"BeginRequest-UTC",
+				"colSpan":"2"
+			}	
+	]
+}

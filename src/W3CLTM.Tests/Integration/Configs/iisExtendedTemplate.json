@@ -1,0 +1,36 @@
+{
+		"enabled":true,
+		"logAll":true,
+		"batchSize":10000,
+      "conversions": [
+        {"elementName": "datetime","type": "DateTime"},
+        {"elementName": "s-port","type": "int"},
+        {"elementName": "sc-status","type": "int"},
+        {"elementName": "sc-substatus","type": "int"},
+        {"elementName": "sc-win32-status","type": "int"},
+        {"elementName": "sc-bytes","type": "int"},
+        {"elementName": "cs-bytes","type": "int"},
+        {"elementName": "time-taken","type": "int"}
+      ],
+      "templates":["fark","you","newman"],
+      "composites": [
+        {
+          "elementName": "datetime",
+          "elements": [
+            "date",
+            "time"
+          ]
+        }
+      ],
+      "aliases": [
+      ],
+      "drop": [
+        "date",
+        "time",
+	    "s-sitename"
+      ],
+      "multiColumnElements": [
+			],
+      "staticElements": [
+			]
+}
