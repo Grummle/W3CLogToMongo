@@ -10,12 +10,12 @@ It reads through all the files in a given directory from oldest to newest (by na
 During the next run its starts from its last position.
 
 Features
--Designate Column datatypes (int,DateTime) when inserting into mongodb
--Composite Columns: append multiple columsn to form a new one.
--Drop Columns: do not log designated columns
--Static Elements: Append elements to each entry from the config file
--Alias Elements: Change field names before insertion
--MultiColumn Elements: Handle MS LAME ASS BS Columns
+* Designate Column datatypes (int,DateTime) when inserting into mongodb
+* Composite Columns: append multiple columsn to form a new one.
+* Drop Columns: do not log designated columns
+* Static Elements: Append elements to each entry from the config file
+* Alias Elements: Change field names before insertion
+* MultiColumn Elements: Handle MS LAME ASS BS Columns
 
 Below is an outline of the config. [This](https://gist.github.com/3209354) is an example of a templated config.
 
