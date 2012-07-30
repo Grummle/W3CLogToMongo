@@ -5,11 +5,14 @@ namespace IILogReader
 {
     public class CompositeElement
     {
+        public CompositeElement()
+        {
+            Glue = " ";
+        }
+
         public string Name { get; set; }
         public string[] Components { get; set; }
         public string Glue { get; set; }
-
-        public CompositeElement() { Glue = " "; }
 
         public CompositeElement Named(string name)
         {

@@ -1,27 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace IILogReader
 {
     public class Logger
     {
-        public virtual string Path { get; set; }
-        private int ExceptionCount { get; set; }
-        private bool warned { get; set; }
-
-        protected Logger() { }
+        protected Logger()
+        {
+        }
 
         public Logger(string path)
         {
             Path = path;
         }
 
+        public virtual string Path { get; set; }
+        private int ExceptionCount { get; set; }
+        private bool warned { get; set; }
+
         public virtual void Log(string message)
         {
-            using (var fs = File.AppendText(Path))
+            using (StreamWriter fs = File.AppendText(Path))
             {
                 fs.WriteLine(message);
             }
@@ -29,7 +28,7 @@ namespace IILogReader
 
         public virtual void Log(string message, Exception exception)
         {
-            var text = string.Format("{0}: {1}\r\n{2}", message, exception.GetType().Name, exception.ToString());
+            string text = string.Format("{0}: {1}\r\n{2}", message, exception.GetType().Name, exception);
             if (ExceptionCount < 100)
             {
                 Log(text);

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using IILogReader;
 using IILogReader.Configuration;
 using NUnit.Framework;
-using Newtonsoft.Json.Linq;
 using Shouldly;
 
 namespace IISLogReader.Tests.Integration
@@ -14,12 +9,17 @@ namespace IISLogReader.Tests.Integration
     [TestFixture]
     public class W3CLogReaderFactoryTests
     {
-        public Configuration.source source;
+        #region Setup/Teardown
+
         [SetUp]
         public void Setup()
         {
-            source = new Configuration.source(); 
+            source = new Configuration.source();
         }
+
+        #endregion
+
+        public Configuration.source source;
 
         [Test]
         public void Confirm_source_Defaults()
@@ -56,22 +56,22 @@ namespace IISLogReader.Tests.Integration
             baseSource.enabled.GetValueOrDefault().ShouldBe(true);
 
             baseSource.batchSize.GetValueOrDefault().ShouldBe(0);
-            overlay.batchSize= 69;
+            overlay.batchSize = 69;
             baseSource.Overlay(overlay);
             baseSource.batchSize.GetValueOrDefault().ShouldBe(69);
 
             baseSource.id.IsNullOrEmpty().ShouldBe(true);
-            overlay.id= "anid";
+            overlay.id = "anid";
             baseSource.Overlay(overlay);
             baseSource.id.ShouldBe("anid");
 
             baseSource.logDirectory.IsNullOrEmpty().ShouldBe(true);
-            overlay.logDirectory= "logdir";
+            overlay.logDirectory = "logdir";
             baseSource.Overlay(overlay);
             baseSource.logDirectory.ShouldBe("logdir");
 
             baseSource.entryLimit.GetValueOrDefault().ShouldBe(0);
-            overlay.entryLimit= 1000;
+            overlay.entryLimit = 1000;
             baseSource.Overlay(overlay);
             baseSource.entryLimit.ShouldBe(1000);
 

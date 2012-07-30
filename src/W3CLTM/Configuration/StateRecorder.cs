@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Newtonsoft.Json;
 
 namespace IILogReader.Configuration
 {
     public class StateRecorder
     {
-        public IList<LogReaderState> States { get; set; }
-        protected string filePath { get; set; }
-
         public StateRecorder()
         {
             States = new List<LogReaderState>();
@@ -27,22 +22,23 @@ namespace IILogReader.Configuration
             }
         }
 
+        public IList<LogReaderState> States { get; set; }
+        protected string filePath { get; set; }
+
         public virtual LogReaderState this[string id]
         {
-            get
-            {
-                return States.FirstOrDefault(x=>x.id==id);
-            }
+            get { return States.FirstOrDefault(x => x.id == id); }
             set
             {
                 States.Where(x => x.id == value.id).ToList().ForEach(x => States.Remove(x));
                 value.id = id;
-                States.Where(x=>x.id==id).ToList().ForEach(x=>States.Remove(x));
+                States.Where(x => x.id == id).ToList().ForEach(x => States.Remove(x));
                 States.Add(value);
-                File.WriteAllText(filePath,JsonConvert.SerializeObject(States,Formatting.Indented));
+                File.WriteAllText(filePath, JsonConvert.SerializeObject(States, Formatting.Indented));
             }
         }
     }
+
     public class LogReaderState
     {
         public string id { get; set; }

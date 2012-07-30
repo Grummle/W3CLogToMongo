@@ -55,11 +55,11 @@
     <Compile Include="Binders\DatTimeBinder.cs" />
     <Compile Include="Binders\IBinder.cs" />
     <Compile Include="Binders\IntBinder.cs" />
-    <Compile Include="CompositeElement.cs" />
+    <Compile Include="Configuration\CompositeElement.cs" />
     <Compile Include="Configuration\Configuration.cs" />
     <Compile Include="Configuration\StateRecorder.cs" />
-    <Compile Include="Configuration\W3CLogReaderFactory.cs" />
-    <Compile Include="Conversion.cs" />
+    <Compile Include="W3CLogReaderFactory.cs" />
+    <Compile Include="Configuration\Conversion.cs" />
     <Compile Include="IISLogReaderExtensions.cs" />
     <Compile Include="ILogPersister.cs" />
     <Compile Include="Logger.cs" />

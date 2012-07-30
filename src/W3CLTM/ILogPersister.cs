@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -24,32 +23,38 @@ namespace IILogReader
             _logger = logger;
         }
 
+        #region ILogPersister Members
+
         public int BatchSize { get; set; }
 
         public virtual void Persist(IEnumerable<IDictionary<string, object>> entries)
         {
-            var docs = entries.Select(x => new BsonDocument(x));
+            IEnumerable<BsonDocument> docs = entries.Select(x => new BsonDocument(x));
 
             try
             {
-                docs.InBatchesOf(BatchSize,_logger).ForEach(x =>
-                                                                {
-                                                                    if (x.Any())
-                                                                        _collection.InsertBatch(x);
-                                                                });
+                docs.InBatchesOf(BatchSize, _logger).ForEach(x =>
+                                                                 {
+                                                                     if (x.Any())
+                                                                         _collection.InsertBatch(x);
+                                                                 });
             }
             catch (Exception e)
             {
-                _logger.Log("Errored Out Persisting to Mongo",e);
+                _logger.Log("Errored Out Persisting to Mongo", e);
             }
         }
+
+        #endregion
     }
 
     public class LogPersisterFactory
     {
         private readonly Logger _logger;
 
-        protected LogPersisterFactory(){}
+        protected LogPersisterFactory()
+        {
+        }
 
         public LogPersisterFactory(Logger logger)
         {
@@ -58,8 +63,9 @@ namespace IILogReader
 
         public virtual ILogPersister GetPersister(string connectionString, string database, string collectionName)
         {
-            var collection = MongoServer.Create(connectionString).GetDatabase(database).GetCollection<BsonDocument>(collectionName);
-            return new MongoLogPersister(collection,_logger);
+            MongoCollection<BsonDocument> collection =
+                MongoServer.Create(connectionString).GetDatabase(database).GetCollection<BsonDocument>(collectionName);
+            return new MongoLogPersister(collection, _logger);
         }
     }
 }
