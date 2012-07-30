@@ -6,6 +6,20 @@ W3C Extended Log to Mongo
 This is a utility to read W3C Extended Log formated log files. 
 I use it for IIS 7.5 log files, though I believe Apache can output in W3C as well.
 
+It reads through all the files in a given directory from oldest to newest (by name). When its finished it saves its current state.
+During the next run its starts from its last position.
+
+Features
+-Designate Column datatypes (int,DateTime) when inserting into mongodb
+-Composite Columns: append multiple columsn to form a new one.
+-Drop Columns: do not log designated columns
+-Static Elements: Append elements to each entry from the config file
+-Alias Elements: Change field names before insertion
+-MultiColumn Elements: Handle MS LAME ASS BS Columns
+
+Below is an outline of the config [this](https://gist.github.com/3209354) is an example of a templated config.
+
+```
 {
     "enabled": <bool>,                              #should this source be processed
     "batchSize": <int>,                             #
@@ -59,3 +73,4 @@ I use it for IIS 7.5 log files, though I believe Apache can output in W3C as wel
         <string>
     ]
 }
+```
